@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prediction Result</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon4.png') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="light-mode">
+  <header>
+    <h1 style="color:white;">📊 Prediction Result</h1>
+  </header>
+
+  <main>
+    <div class="form-card">
+      <h2>🏡 Estimated Construction Cost:</h2>
+      <p><strong>₹ {{ prediction }}</strong></p>
+    <a class="btn" href="{{ url_for('breakdown') }}?base={{ prediction }}">View Cost Breakdown</a>
+
+
+
+
+
+      <hr style="margin: 1.5rem 0; border-color: #ccc;" />
+
+      
+    <a href="{{ url_for('home') }}" class="btn">Go Home</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 House Predictor</p>
+  </footer>
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="theme-switch" />
+    <label class="toggle-label" for="theme-switch"></label>
+  </div>
+
+   <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script>
+    // Extract query parameters and display them
+    const params = new URLSearchParams(window.location.search);
+    const fields = [
+      "area",
+      "Number of Floors",
+      "Material",
+      "rooms",
+      "bathrooms",
+      "parking",
+      "furnishing",
+      "construction_type",
+      "material_type",
+      "features",
+      "interior",
+      "road condition"
+    ];
+
+    fields.forEach(field => {
+      const el = document.getElementById(field);
+      if (el) {
+        el.textContent = params.get(field) || "N/A";
+      }
+    });
+
+    // const estimatedCost = 2450000;//
+
+     document.querySelector("p strong").textContent = `₹ ${estimatedCost.toLocaleString()}`;
+     document.querySelector("#breakdown-link").href = `breakdown.html?base=${estimatedCost}`;
+  </script>
+</body>
+</html>
+</body>
+</html>
+  

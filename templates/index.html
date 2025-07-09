@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>House Making Price Predictor</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon4.png') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="light-mode">
+
+  <!-- Header + Navigation Bar -->
+  <header class="main-header">
+    <div class="logo">🏠 House Price Predictor</div>
+   <nav class="nav-bar">
+  <a href="{{ url_for('schemes') }}">Govt. Schemes</a>
+  <a href="{{ url_for('tips') }}">Construction Tips</a>
+  <a href="{{ url_for('calculator') }}">Cost Calculator</a>
+  <a href="{{ url_for('contacts') }}">Contact</a>
+</nav>
+  </header>
+
+  <!-- Live News Ticker -->
+  <div class="news-ticker">
+    <marquee behavior="scroll" direction="left">
+      📰 Govt announces subsidy on eco-friendly materials | 🧱 Cement prices expected to drop in Q3 | 🚧 New safety regulations for home construction | 💡 Tips to reduce cost while building your home
+    </marquee>
+  </div>
+
+  <main>
+    <div class="form-card">
+      <h2>Welcome to the Future of Construction Planning</h2>
+      <h3>Accurate predictions based on area, location, and more.</h3>
+      <a href="{{ url_for('predict_page') }}" class="btn">Start Predicting</a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Built with 🛠️ by House Predictor | <i class="fas fa-heart"></i> Thank you for trusting us!</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="theme-switch" />
+    <label class="toggle-label" for="theme-switch"></label>
+  </div>
+
+ <!-- Chat Icon -->
+<div id="chat-icon">💬</div>
+
+<!-- Enhanced Chat Box -->
+<div id="chat-box" class="hidden">
+  <div class="chat-header">
+     👋Chat with us
+    <button id="close-chat">×</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="bot-message message">Hi there! Ask me anything about predicting house prices. 😊</div>
+  </div>
+  <div class="faq-quick-buttons">
+    <strong>Instant Questions:</strong>
+    <button>How to use the predictor?</button>
+    <button>How accurate are the predictions?</button>
+    <button>What data is required?</button>
+    <button>Can I predict for multiple cities?</button>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type your question..." />
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trusted Contractors - House Price Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon4.png') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+
+  <header class="main-header">
+    <div class="logo">🏠 House Price Predictor</div>
+    <nav class="nav-bar">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('schemes') }}" class="active">Govt. Schemes</a>
+      <a href="{{ url_for('tips') }}">Construction Tips</a>
+      <a href="{{ url_for('calculator') }}">Cost Calculator</a>
+      <a href="{{ url_for('contacts') }}">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-section" id="contact-page">
+    <h2>📍 Area-Wise Trusted Contractors</h2>
+    <p>Find experienced professionals to help bring your project to life!</p>
+
+    <div class="contractor-grid">
+
+      <div class="contractor-card">
+        <h3>👷 Rajesh Sharma</h3>
+        <p><strong>Location:</strong> Patna, Bihar</p>
+        <p><strong>Experience:</strong> 10+ years</p>
+        <p><strong>Specialty:</strong> Residential & Commercial</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <a href="tel:+919876543210" class="btn">📞 Call Now</a>
+      </div>
+
+      <div class="contractor-card">
+        <h3>👷 Priya Verma</h3>
+        <p><strong>Location:</strong> Delhi NCR</p>
+        <p><strong>Experience:</strong> 7 years</p>
+        <p><strong>Specialty:</strong> Interiors & Villas</p>
+        <p><strong>Phone:</strong> +91 91234 56789</p>
+        <a href="tel:+919123456789" class="btn">📞 Call Now</a>
+      </div>
+
+      <div class="contractor-card">
+        <h3>👷 Ankit Kumar</h3>
+        <p><strong>Location:</strong> Ranchi, Jharkhand</p>
+        <p><strong>Experience:</strong> 12 years</p>
+        <p><strong>Specialty:</strong> Farmhouses & Low-Cost Housing</p>
+        <p><strong>Phone:</strong> +91 99887 76655</p>
+        <a href="tel:+919988776655" class="btn">📞 Call Now</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 House Making Price Predictor. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Govt. Schemes - House Predictor</title>
+  <link rel="icon" type="image" href="../static/favicon4.png">
+  <link rel="stylesheet" href="../static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+  <header class="main-header">
+    <div class="logo">🏠 House Price Predictor</div>
+    <nav class="nav-bar">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('schemes') }}" class="active">Govt. Schemes</a>
+      <a href="{{ url_for('tips') }}">Construction Tips</a>
+      <a href="{{ url_for('calculator') }}">Cost Calculator</a>
+    </nav>
+  </header>
+
+  <main class="page-section">
+   <h2>🏛️ Government Schemes</h2>
+
+    <div class="card-list">
+      <details class="card">
+        <summary>1. PMAY (Pradhan Mantri Awas Yojana) 🏠</summary>
+        <p>Get subsidies on home loans for first-time buyers.</p>
+      </details>
+
+      <details class="card">
+        <summary>2. CLSS (Credit Linked Subsidy Scheme) 💰</summary>
+        <p> Interest reduction on loans based on income slab.</p>
+      </details>
+
+      <details class="card">
+        <summary>3. Eco-Niwas Samhita 🌿</summary>
+        <p>Incentives for using energy-efficient materials..</p>
+      </details>
+
+      <details class="card">
+        <summary>4. State Housing Boards 🏢</summary>
+        <p>Regional schemes for affordable housing and subsidies.</p>
+      </details>
+
+      <details class="card">
+        <summary>5. Urban Affordable Housing Program 🏙️</summary>
+        <p>Benefits for LIG and EWS families.</p>
+      </details>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 House Making Price Predictor. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Predict House Price</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon4.png') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="light-mode">
+  <header>
+    <h1 style="color:white;">🏠 Predict House Price</h1>
+  </header>
+
+  <main>
+    <div class="form-card">
+      <form action="/result" method="post" class="form-grid">
+
+  <div class="form-group">
+    <label>Area (sq ft): <input type="number" name="area" required></label>
+  </div>
+
+  <div class="form-group">
+    <label>Number of Floors: <input type="number" name="number_of_floors" required></label>
+  </div>
+
+  <div class="form-group">
+    <label>Material Quality:
+      <select name="material" required>
+        <option value="standard">Standard</option>
+        <option value="premium">Premium</option>
+        <option value="luxury">Luxury</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label for="rooms">Rooms Per Floor:</label>
+    <input type="number" id="rooms" name="rooms" required />
+  </div>
+
+  <div class="form-group">
+    <label for="bathrooms">Bathrooms Per Floor:</label>
+    <input type="number" id="bathrooms" name="bathrooms" required />
+  </div>
+
+  <div class="form-group">
+    <label>Parking Space:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="parking" value="yes" required> Yes</label>
+      <label><input type="radio" name="parking" value="no"> No</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="furnishing">Furnishing:</label>
+    <select name="furnishing" id="furnishing" required>
+      <option value="Furnished">Furnished</option>
+      <option value="Semi-Furnished">Semi-Furnished</option>
+      <option value="Unfurnished">Unfurnished</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="construction-type">Type of Construction:</label>
+    <select id="construction-type" name="construction_type" required>
+      <option value="Residential">Residential</option>
+      <option value="Commercial">Commercial</option>
+      <option value="Villa">Villa</option>
+      <option value="Farmhouse">Farmhouse</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="material-type">Material Preference:</label>
+    <select id="material-type" name="material_type" required>
+      <option value="Brick">Brick</option>
+      <option value="Concrete">Concrete</option>
+      <option value="Prefab">Prefab</option>
+      <option value="Mixed">Mixed</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Additional Features:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="features" value="Basement"> Basement</label><br>
+      <label><input type="checkbox" name="features" value="Terrace"> Terrace</label><br>
+      <label><input type="checkbox" name="features" value="Garden"> Garden</label><br>
+      <label><input type="checkbox" name="features" value="Swimming Pool"> Swimming Pool</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Interior Work Included?</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="interior" value="False Ceiling"> False Ceiling</label><br>
+      <label><input type="checkbox" name="interior" value="Flooring"> Flooring</label><br>
+      <label><input type="checkbox" name="interior" value="Modular Kitchen"> Modular Kitchen</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="road_type">Nearby Road Condition:</label>
+    <select id="road_type" name="road_condition" required>
+      <option value="Busy Main Road">Busy Main Road</option>
+      <option value="Moderately Busy Road">Moderately Busy Road</option>
+      <option value="Quiet Residential Road">Quiet Residential Road</option>
+      <option value="Dead End / Cul-de-sac">Dead End / Cul-de-sac</option>
+    </select>
+  </div>
+
+  <div class="form-group full-width">
+    <input type="submit" class="btn" value="Predict Price" />
+  </div>
+</form>
+
+  </div>
+  </main>
+
+  <footer>
+    <p>© 2025 House Predictor</p>
+  </footer>
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="theme-switch" />
+    <label class="toggle-label" for="theme-switch"></label>
+  </div>
+
+ <!-- Chat Icon -->
+<div id="chat-icon">💬</div>
+
+<!-- Enhanced Chat Box -->
+<div id="chat-box" class="hidden">
+  <div class="chat-header">
+     👋Chat with us
+    <button id="close-chat">×</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="bot-message message">Hi there! Ask me anything about predicting house prices. 😊</div>
+  </div>
+  <div class="faq-quick-buttons">
+    <strong>Instant Questions:</strong>
+    <button>How to use the predictor?</button>
+    <button>How accurate are the predictions?</button>
+    <button>What data is required?</button>
+    <button>Can I predict for multiple cities?</button>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type your question..." />
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+ <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

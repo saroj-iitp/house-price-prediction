@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cost Breakdown - House Price Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon4.png') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const baseString = params.get('base')?.replace(/,/g, '') || "0";
+    const base = parseFloat(baseString);
+
+    function formatINR(num) {
+      return `<span style="font-size: 0.9em; vertical-align: middle; position: relative; top: -1px;">&#8377;</span> ${num.toLocaleString('en-IN', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}`;
+    }
+
+    const breakdown = {
+      materials: base * 0.55,
+      labor: base * 0.35,
+      architect: base * 0.03,
+      permits: base * 0.02,
+      taxes: base * 0.05
+    };
+
+    document.getElementById('grand-total').innerHTML = formatINR(base);
+    document.getElementById('mat-cost').innerHTML = formatINR(breakdown.materials);
+    document.getElementById('labor-cost').innerHTML = formatINR(breakdown.labor);
+    document.getElementById('arch-cost').innerHTML = formatINR(breakdown.architect);
+    document.getElementById('permits-cost').innerHTML = formatINR(breakdown.permits);
+    document.getElementById('tax-cost').innerHTML = formatINR(breakdown.taxes);
+
+    const ctx = document.getElementById('costChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Materials', 'Labor', 'Architect Fees', 'Permits & Legal', 'Taxes & Regulatory Fees'],
+        datasets: [{
+          data: [
+            breakdown.materials,
+            breakdown.labor,
+            breakdown.architect,
+            breakdown.permits,
+            breakdown.taxes
+          ],
+          backgroundColor: ['#007bff', '#28a745', '#ffc107', '#17a2b8', '#dc3545'],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+
+    emailjs.init('kA584cvNXMz70Ek1y');
+    const emailForm = document.getElementById("email-form");
+    emailForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      emailjs.sendForm('service_xa90k7b', 'template_1f2pzyd', this)
+        .then(() => {
+          alert("✅ Estimate sent successfully!");
+          this.reset();
+        })
+        .catch((error) => {
+          console.error("Email sending failed:", error);
+          alert("❌ Failed to send estimate.");
+        });
+    });
+  });
+</script>
+
+
+
+
+
+</head>
+<body class="light-mode">
+
+  <header class="main-header">
+    <div class="logo">🏗️ Cost Breakdown</div>
+    <nav class="nav-bar">
+      <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('predict_page') }}">New Estimate</a>
+
+
+    </nav>
+  </header>
+
+  <main class="breakdown-section">
+    <div class="print-logo">
+       <img src="{{ url_for('static', filename='favicon4.png') }}" alt="House Price Predictor Logo" />
+
+    </div>
+    <h2>Total Estimated Cost: <span id="grand-total" class="highlight"></span></h2>
+
+    <section class="cost-table">
+      <div class="row"><strong>Materials</strong><span id="mat-cost"></span></div>
+      <div class="row"><strong>Labor</strong><span id="labor-cost"></span></div>
+      <div class="row"><strong>Architect Fees</strong><span id="arch-cost"></span></div>
+      <div class="row"><strong>Permits & Legal</strong><span id="permits-cost"></span></div>
+      <div class="row"><strong>Taxes & Regulatory Fees</strong><span id="tax-cost"></span></div>
+    </section>
+
+    <section style="max-width: 700px; margin: 3rem auto;">
+      <canvas id="costChart" width="500" height="500"></canvas>
+    </section>
+  </main>
+
+  <!-- Email Form -->
+  <form id="email-form" style="text-align:center; margin-top: 2rem;">
+    <h3>📧 Email this estimate</h3>
+    <input type="text" name="user_name" placeholder="Your Name" required
+      style="padding: 10px; width: 300px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 10px;" />
+    <input type="email" name="user_email" placeholder="Your Email" required
+      style="padding: 10px; width: 300px; border-radius: 8px; border: 1px solid #ccc;" />
+    <input type="hidden" name="grand_total" id="hidden-cost" />
+    <button type="submit" class="btn" style="margin-top: 10px;">Send Estimate</button>
+  </form>
+
+  
+
+    <div class="breakdown-actions">
+      <button class="btn" onclick="window.print()">🖨 Download PDF</button>
+   </div>
+
+  <footer>
+    <p>&copy; 2025 House Making Price Predictor. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
